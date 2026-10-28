@@ -1,0 +1,6 @@
+data.grib2
+*.grib2
+*.idx
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
