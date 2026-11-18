@@ -63,6 +63,43 @@ Mozambique, Malawi, Madagascar, Honduras, Chad, Pakistan).
 
 <br clear="all"/>
 
+### Copernicus data (free account and key)
+
+Copernicus data, run by ECMWF for the EU, is free and open too; the data stores ask you to register once. Each
+notebook asks for your key with a hidden prompt and keeps it only for the Colab session.
+
+**El Niño in ECMWF's seasonal forecast** (C3S, SEAS5). UNICEF's October 2026 El Niño analysis used the September run.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/seasonal_elnino.ipynb)
+
+<img src="unicef/seasonal_qr.png" width="200" align="left" hspace="20"/>
+<img src="unicef/seasonal_elnino.png" width="360"/>
+
+<br clear="all"/>
+
+**Look back at a cyclone with ERA5** (C3S reanalysis, 1940 to now). Cyclone Gezani, Madagascar, February 2026.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/cyclone_era5.ipynb)
+
+<img src="unicef/cyclone_qr.png" width="200" align="left" hspace="20"/>
+<img src="unicef/cyclone_era5.png" width="300"/>
+
+<br clear="all"/>
+
+**The air children breathe, five days ahead** (CAMS). PM2.5 over South Asia; switch to Mongolia in one line.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/air_quality_cams.ipynb)
+
+<img src="unicef/air_qr.png" width="200" align="left" hspace="20"/>
+<img src="unicef/air_quality_cams.png" width="360"/>
+
+<br clear="all"/>
+
+**Counting hot days with ERA5-Land** (C3S). Days at or above 35 °C, the measure in UNICEF's Children's Climate Risk Report 2026.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/hot_days_era5land.ipynb)
+
+<img src="unicef/hot_qr.png" width="200" align="left" hspace="20"/>
+<img src="unicef/hot_days_era5land.png" width="420"/>
+
+<br clear="all"/>
+
 ---
 
 ## How it works
