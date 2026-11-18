@@ -4,3 +4,4 @@ data.grib2
 .ipynb_checkpoints/
 __pycache__/
 .DS_Store
+.gstack/

@@ -28,13 +28,27 @@ Everything uses free, open data from ECMWF and open-source Python
 
 <br clear="all"/>
 
+## 🇬🇷 Greece — the week ahead, every island
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/greece_forecast.ipynb)
+
+<img src="greece_qr.png" width="200" align="left" hspace="20"/>
+<img src="greece_map.png" width="420"/>
+
+<br clear="all"/>
+
+<img src="greece_week.png" width="820"/>
+
 ---
 
 ## How it works
 
 1. Request one field from ECMWF open data at 0.1° (~9 km) — `resol="0p1"`.
 2. Read it with earthkit, bin every grid point into an **H3 hexagon** (res 5 ≈ 9 km), average per cell.
-3. Keep the hexagons inside the country, draw the map, star the capital.
+3. Keep the hexagons inside the country, draw the map, star the capital. (Greece keeps every hexagon that
+   touches land, using the [geoBoundaries](https://www.geoboundaries.org) border, so the small islands stay.)
+
+`tools/build_greece.py` builds and runs the Greece notebook; `tools/make_qr.py <notebook>` makes its QR.
 
 ## Data & licence
 
