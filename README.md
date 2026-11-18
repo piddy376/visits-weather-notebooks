@@ -41,6 +41,30 @@ Everything uses free, open data from ECMWF and open-source Python
 
 ---
 
+## UNICEF — ECMWF open data for the places UNICEF works
+
+Two notebooks in [`unicef/`](unicef/), both from open data with no account. Each has a `PLACES` list of countries
+where UNICEF responded to, or prepared for, weather and climate hazards in 2025–26 (Philippines, Somalia,
+Mozambique, Malawi, Madagascar, Honduras, Chad, Pakistan).
+
+**Where will the rain fall?** The next 10 days at 9 km.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/rain_forecast.ipynb)
+
+<img src="unicef/rain_qr.png" width="200" align="left" hspace="20"/>
+<img src="unicef/rain_map.png" width="300"/>
+
+<br clear="all"/>
+
+**How sure are we?** The chance of heavy rain from two open ensembles, IFS ENS (physics) and AIFS ENS (machine learning).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/ensemble_probability.ipynb)
+
+<img src="unicef/ensemble_qr.png" width="200" align="left" hspace="20"/>
+<img src="unicef/ensemble_probability.png" width="420"/>
+
+<br clear="all"/>
+
+---
+
 ## How it works
 
 1. Request one field from ECMWF open data at 0.1° (~9 km) — `resol="0p1"`.
