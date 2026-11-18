@@ -481,7 +481,7 @@ for year in YEARS:
     hot[year] = (t >= THRESHOLD).sum(tdim).where(np.isfinite(t.isel({tdim: 0})))
     print(f"{year}: {float(hot[year].mean()):.0f} days at or above {THRESHOLD} °C on average across the box")'''),
 md("## 3 · Map both years"),
-code('''style = ekp.styles.Style(levels=[1, 5, 10, 20, 30, 40, 50, 55, 61], colors="YlOrRd", extend="neither")
+code('''style = ekp.styles.Style(levels=[1, 5, 10, 20, 30, 40, 50, 55, 60], colors="YlOrRd", extend="max")   # 61 = every day
 fig = ekp.Figure(rows=1, columns=len(YEARS), figsize=(13, 6))
 for col, year in enumerate(YEARS):
     m = fig.add_map(0, col, domain=[AREA[1], AREA[3], AREA[2], AREA[0]])
