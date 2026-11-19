@@ -20,15 +20,38 @@ COLAB = "https://colab.research.google.com/github/piddy376/visits-weather-notebo
 md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
 
 
-def head(title, sub, name, body, wait=False):
-    tail = ("*In Google Colab? Press **Runtime → Run all**. The data store queues requests, so step 2 can take a few minutes.*"
-            if wait else "*In Google Colab? Press **Runtime → Run all**. Nothing to install, no account needed.*")
-    return md(f"""# {title}
+RAW = "https://raw.githubusercontent.com/piddy376/visits-weather-notebooks/main/assets/"
+SEWA = "Made for SEWA, Strengthening Early Warnings for Africa"
+
+
+def head(title, sub, name, body, data, wait=False, logo="open"):
+    """Title cell: logos, title, Colab badge, what it does, what you need, the data, how to run it."""
+    logos = f'<img src="{RAW}ECMWF_Core_Logo_RGB.png" alt="ECMWF" height="40"/>'
+    if logo in ("cams", "c3s"):
+        logos += f'&nbsp;&nbsp;&nbsp;&nbsp;<img src="{RAW}{logo}_logoline_pos.png" alt="Copernicus" height="28"/>'
+    need = ("a Google account (to use Colab) and a free Copernicus account (step below)." if wait else
+            "a Google account (to use Colab). No other account, no fee, nothing to install.")
+    tail = ("*Press **Runtime → Run all**. The data store queues requests, so step 2 can take a few minutes.*"
+            if wait else "*Press **Runtime → Run all**. The first run takes a few minutes, mostly installing the tools.*")
+    rows = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in data)
+    return md(f"""{logos}
+
+# {title}
 ### {sub}
+*{SEWA}*
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]({COLAB}{name})
 
 {body}
+
+**What you need:** {need} Everything runs on Google's computers: the data is downloaded there, not to your phone
+or laptop, so a slow or mobile connection is fine.
+
+| Data | What this notebook uses | Licence |
+|---|---|---|
+{rows}
+
+**Tools:** [earthkit](https://earthkit.ecmwf.int), ECMWF's free, open-source Python tools for weather and climate data.
 
 {tail}""")
 
@@ -62,15 +85,21 @@ def heat():
 head("Senegal's next six afternoons at 9 km 🌡️", "ECMWF free & open data · IFS 9 km · no account needed", name,
      """ECMWF's 9 km forecast (IFS) is **open data**: no login, no fee. This notebook downloads 2 m temperature for
 15:00 UTC (15:00 in Dakar) on each of the next six days, prints how hot each afternoon gets in six Senegalese towns,
-and maps the hottest one."""),
-code(PIP_OD.replace('earthkit-plots', 'earthkit-plots ecmwf-opendata')), code(IMPORTS + "\nfrom ecmwf.opendata import Client"),
+and maps the hottest one.""",
+     [("ECMWF IFS forecast, 9 km (0.1°)", "2 m temperature at 15 UTC, six days, latest run", "CC BY 4.0, open data")]),
+code(PIP_OD.replace("!pip", "%pip").replace('earthkit-plots', 'earthkit-plots ecmwf-opendata')), code(IMPORTS + "\nfrom ecmwf.opendata import Client"),
 md("## 1 · Choose the area"),
 code('''AREA  = [17.5, -18.5, 11.5, -10.5]          # north, west, south, east: Senegal and The Gambia
 STEPS = [15 + 24 * d for d in range(6)]     # 15 UTC today and the next five days (Dakar is on UTC)
 ''' + CITIES),
 md("## 2 · Get the 9 km forecast (ECMWF open data)"),
-code('''result = Client("ecmwf").retrieve(time=0, step=STEPS, stream="oper", type="fc", levtype="sfc",
-                                  param="2t", resol="0p1", target="t2m.grib2")      # resol="0p1" = 9 km
+code('''for SOURCE in ("ecmwf", "aws", "google"):      # ECMWF first, then the cloud mirrors if it is busy
+    try:
+        result = Client(SOURCE).retrieve(time=0, step=STEPS, stream="oper", type="fc", levtype="sfc",
+                                         param="2t", resol="0p1", target="t2m.grib2")   # resol="0p1" = 9 km
+        break
+    except Exception as err:
+        print(f"{SOURCE} did not answer ({type(err).__name__}), trying the next mirror")
 run = result.datetime
 x = ekd.from_source("file", "t2m.grib2").to_xarray()
 x = x.assign_coords(longitude=((x.longitude + 180) % 360) - 180).sortby("longitude")
@@ -113,15 +142,22 @@ head("AIFS and IFS, side by side over Senegal 🤖", "ECMWF free & open data · 
      name,
      """ECMWF runs two global forecasts and both are **open data**: the physics-based **IFS** and **AIFS**, the
 machine-learned model, which produces a ten-day forecast in minutes. This notebook takes the same run of each, maps
-2 m temperature three days ahead side by side, then maps the difference between them."""),
-code(PIP_OD), code(IMPORTS),
+2 m temperature about two and a half days ahead side by side, then maps the difference between them.""",
+     [("ECMWF IFS forecast, 0.25°", "2 m temperature, latest run", "CC BY 4.0, open data"),
+      ("ECMWF AIFS Single forecast, 0.25°", "2 m temperature, the same run", "CC BY 4.0, open data")]),
+code(PIP_OD.replace("!pip", "%pip")), code(IMPORTS),
 md("## 1 · Choose the area and the lead time"),
 code('''AREA = [22.0, -22.0, 8.0, -6.0]             # north, west, south, east
 STEP = 60                                   # hours after the run starts (about two and a half days)
 ''' + CITIES),
 md("## 2 · Get both forecasts (ECMWF open data, 0.25°)"),
 code('''def get(model):
-    fl = ekd.from_source("ecmwf-open-data", model=model, param="2t", step=STEP).to_fieldlist()
+    for source in ("ecmwf", "aws", "google"):  # ECMWF first, then the cloud mirrors if it is busy
+        try:
+            fl = ekd.from_source("ecmwf-open-data", source=source, model=model, param="2t", step=STEP).to_fieldlist()
+            break
+        except Exception as err:
+            print(f"{source} did not answer ({type(err).__name__}), trying the next mirror")
     x = fl.to_xarray()
     x = x.assign_coords(longitude=((x.longitude + 180) % 360) - 180).sortby("longitude")
     x = x.sel(latitude=slice(AREA[0], AREA[2]), longitude=slice(AREA[1], AREA[3]))
@@ -167,11 +203,13 @@ def dust():
     name, png = "dust_cams.ipynb", "dust_cams.png"
     page = "https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts?tab=download"
     return name, png, [
-head("Harmattan dust over West Africa with CAMS 🏜️", "Copernicus Atmosphere Monitoring Service · free account", name,
-     """From November to March the dry north-easterly **Harmattan** carries Saharan dust across the Sahel towards the
-Atlantic. This notebook maps the dust forecast from the **CAMS global forecast**, run by ECMWF for the European Union,
-from yesterday's run up to five days ahead.""", wait=True),
-code(PIP_CDS), md(key_md("Atmosphere Data Store", page)), code(KEY), code(IMPORTS),
+head("Desert dust over West Africa with CAMS 🏜️", "Copernicus Atmosphere Monitoring Service · free account", name,
+     """In the dry season, roughly November to March, the north-easterly **Harmattan** carries Saharan dust across the
+Sahel towards the Atlantic. This notebook maps the dust forecast from the **CAMS global forecast**, run by ECMWF for
+the European Union, from yesterday's run up to five days ahead.""",
+     [("CAMS global atmospheric composition forecast, about 40 km", "Dust aerosol optical depth at 550 nm",
+       "Copernicus licence, free")], wait=True, logo="cams"),
+code(PIP_CDS.replace("!pip", "%pip")), md(key_md("Atmosphere Data Store", page)), code(KEY), code(IMPORTS),
 md("## 1 · Choose the run, the lead time and the area"),
 code('''AREA = [27.0, -26.0, 4.0, 10.0]                                   # north, west, south, east
 DATE = (dt.date.today() - dt.timedelta(days=1)).isoformat()      # yesterday's run is always complete
@@ -214,8 +252,10 @@ head("Senegal's 2024 rainy season in ERA5 🌧️", "Copernicus Climate Change S
      """How wet was the 2024 rainy season (June to October) compared with a normal year? This notebook uses the
 **ERA5 monthly means**, the Copernicus reanalysis that ECMWF produces for the European Union, to compare 2024 with
 the 1991–2020 average, as a percentage of normal. The Senegal River rises in the highlands of Guinea and Mali, so the
-map covers its whole basin.""", wait=True),
-code(PIP_CDS), md(key_md("Climate Data Store", page)), code(KEY), code(IMPORTS),
+map covers its whole basin.""",
+     [("ERA5 monthly means, about 31 km", "Total precipitation, June–October, 1991–2024", "Copernicus licence, free")],
+     wait=True, logo="c3s"),
+code(PIP_CDS.replace("!pip", "%pip")), md(key_md("Climate Data Store", page)), code(KEY), code(IMPORTS),
 md("## 1 · Choose the season, the year and the area"),
 code('''AREA   = [18.0, -18.5, 9.0, -6.0]                     # north, west, south, east
 YEAR   = 2024
@@ -280,11 +320,19 @@ def qr(name, out):
 
 
 if __name__ == "__main__":
+    from senegal_fr import translate
     os.makedirs(OUT, exist_ok=True)
     rundir = sys.argv[sys.argv.index("--run") + 1] if "--run" in sys.argv else None
     only = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else list(JOBS)
+    langs = sys.argv[sys.argv.index("--lang") + 1].split(",") if "--lang" in sys.argv else ["en", "fr"]
     for key in only:
+      for lang in langs:
         name, png, cells = JOBS[key]()
+        label = LABELS[key]
+        if lang == "fr":
+            nfr, pfr = name.replace(".ipynb", "_fr.ipynb"), png.replace(".png", "_fr.png")
+            cells = translate(key, cells, name, nfr, png, pfr)
+            name, png, label = nfr, pfr, label.replace("_qr.png", "_qr_fr.png")
         nb = nbf.v4.new_notebook(cells=cells, metadata={
             "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
             "language_info": {"name": "python"}, "colab": {"provenance": []}})
@@ -299,4 +347,4 @@ if __name__ == "__main__":
                     c.outputs = [o for o in c.outputs if not (o.get("output_type") == "stream" and o.get("name") == "stderr")]
             shutil.copy(os.path.join(rundir, png), os.path.join(OUT, png))
         nbf.write(nb, os.path.join(OUT, name)); print("wrote", name, flush=True)
-        qr(name, os.path.join(OUT, LABELS[key]))
+        qr(name, os.path.join(OUT, label))
