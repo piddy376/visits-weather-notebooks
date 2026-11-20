@@ -104,12 +104,14 @@ notebook asks for your key with a hidden prompt and keeps it only for the Colab 
 
 ## 🇸🇳 Senegal — West Africa, for SEWA
 
-Four notebooks in [`senegal/`](senegal/) for Strengthening Early Warnings for Africa (SEWA), each in English and French
-(`_fr`). The first two use open data with no account; the forecast ones always fetch the latest run. Everything runs
-in Colab, so a slow or mobile connection is fine.
+Four notebooks in [`senegal/`](senegal/) for Strengthening Early Warnings for Africa (SEWA), part of the
+Africa–EU Space Partnership Programme under the EU's Global Gateway: funded by the European Union, implemented by ECMWF.
+Each comes in English, French (`_fr`) and Portuguese (`_pt`); the translations were made with AI assistance and checked
+on a best-efforts basis, and the English version is the reference. The first two use open data with no account; the
+forecast ones always fetch the latest run. Everything runs in Colab, so a slow or mobile connection is fine.
 
 **The next six days at 9 km.** Afternoon 2 m temperature across Senegal and its neighbours (IFS open data).
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast_fr.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast_pt.ipynb)
 
 <img src="senegal/heat_qr.png" width="200" align="left" hspace="20"/>
 <img src="senegal/heat_forecast.png" width="420"/>
@@ -117,7 +119,7 @@ in Colab, so a slow or mobile connection is fine.
 <br clear="all"/>
 
 **AIFS and IFS, same run.** ECMWF's machine-learned and physics-based forecasts side by side, and the difference.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs_fr.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs_pt.ipynb)
 
 <img src="senegal/aifs_qr.png" width="200" align="left" hspace="20"/>
 <img src="senegal/aifs_vs_ifs.png" width="520"/>
@@ -127,7 +129,7 @@ in Colab, so a slow or mobile connection is fine.
 ### Copernicus data (free account and key)
 
 **Desert dust, three days ahead** (CAMS). Dust aerosol optical depth over West Africa.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams_fr.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams_pt.ipynb)
 
 <img src="senegal/dust_qr.png" width="200" align="left" hspace="20"/>
 <img src="senegal/dust_cams.png" width="420"/>
@@ -135,7 +137,7 @@ in Colab, so a slow or mobile connection is fine.
 <br clear="all"/>
 
 **The 2024 rainy season with ERA5** (C3S). June–October rain as a percentage of the 1991–2020 normal; change `YEAR` for any year from 1940.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5_fr.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5_pt.ipynb)
 
 <img src="senegal/rain_qr.png" width="200" align="left" hspace="20"/>
 <img src="senegal/rain_era5.png" width="420"/>
