@@ -7,8 +7,8 @@
 import os, sys, shutil
 import nbformat as nbf
 
-NAME = "greece_forecast.ipynb"
-COLAB = "https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/" + NAME
+NAME = "greece_forecast.ipynb"                                  # written to greece/
+COLAB = "https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/greece/" + NAME
 PIP = "# Install the open-source tools (Colab / fresh machine). Takes ~1 minute.\n" \
       "!pip install -q ecmwf-opendata earthkit-data cfgrib eccodes cartopy shapely h3"
 
@@ -138,7 +138,8 @@ def hexes(ax, d, lw=0.15, outline=0.35):
 
 def colourbar(fig, rect, fs=11):
     cb = fig.colorbar(mcm.ScalarMappable(norm=norm, cmap=cmap), cax=fig.add_axes(rect), orientation="horizontal")
-    cb.set_label("2 m temperature (°C)", fontsize=fs, color=ink)
+    cb.set_label("2 m temperature (°C)", fontsize=fs, color=ink, labelpad=4)
+    cb.ax.xaxis.set_label_position("top")                       # label above the bar, clear of the credit line
     cb.outline.set_linewidth(0.6)
 
 fig = plt.figure(figsize=(11, 8.6), dpi=140)
@@ -156,7 +157,7 @@ colourbar(fig, [0.34, 0.075, 0.32, 0.02])
 fig.text(0.5, 0.955, f"Afternoon temperature across {COUNTRY}", ha="center", fontsize=20, fontweight="bold", color=ink)
 fig.text(0.5, 0.918, f"{when(valid[DAY])} · ECMWF 9 km forecast from {run:%d %B} 00 UTC",
          ha="center", color=grey, fontsize=11.5)
-fig.text(0.02, 0.02, "ECMWF IFS open data, 2 m temperature. © ECMWF, CC-BY-4.0 · Source: www.ecmwf.int · "
+fig.text(0.02, 0.005, "ECMWF IFS open data, 2 m temperature. © ECMWF, CC-BY-4.0 · Source: www.ecmwf.int · "
          "Boundaries: geoBoundaries (CC-BY 4.0), Natural Earth", color=grey, fontsize=8.5)
 fig.savefig(f"{COUNTRY.lower()}_map.png", bbox_inches="tight", facecolor="white")
 plt.show()"""),
@@ -203,7 +204,7 @@ Country border from [geoBoundaries](https://www.geoboundaries.org) (CC-BY 4.0; R
 nb = nbf.v4.new_notebook(cells=cells, metadata={
     "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
     "language_info": {"name": "python"}, "colab": {"provenance": []}})
-here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+here = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "greece")
 
 if "--run" in sys.argv:
     from nbclient import NotebookClient

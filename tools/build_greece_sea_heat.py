@@ -15,9 +15,9 @@ OWN_KEY_MD = ("\n\n**Use your own key.** Everyone who runs this notebook needs t
               "On your own computer with a `~/.cdsapirc` already in place, the cell uses that and asks nothing.")
 KEY_MD = KEY_MD.rstrip() + OWN_KEY_MD
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+HERE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "greece")
 NAME, PNG, QR = "greece_sea_heat.ipynb", "greece_sea_heat.png", "greece_sea_qr.png"
-COLAB = "https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/"
+COLAB = "https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/greece/"
 md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
 
 CELLS = [

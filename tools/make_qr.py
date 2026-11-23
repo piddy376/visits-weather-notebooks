@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Styled Colab QR for a notebook in this repo (same look as bulgaria_qr.png / hungary_qr.png).
 
-    python tools/make_qr.py greece_forecast.ipynb      # -> greece_qr.png
+    python tools/make_qr.py greece/greece_forecast.ipynb      # -> greece/greece_qr.png
 """
 import os, sys
 import qrcode
@@ -18,6 +18,6 @@ qr.add_data(url); qr.make(fit=True)
 img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
                     color_mask=RadialGradiantColorMask(back_color=(255, 255, 255),
                                                        center_color=(0, 61, 107), edge_color=(42, 134, 193)))
-out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                   nb.split("_")[0] + "_qr.png")
+folder, base = os.path.split(nb)
+out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), folder, base.split("_")[0] + "_qr.png")
 img.save(out); print(out, "->", url)

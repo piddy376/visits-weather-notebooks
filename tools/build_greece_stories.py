@@ -2,7 +2,6 @@
 """Build four Greece notebooks into greece/, one per animation in the HNMS visit deck, plus their QR codes.
 
     waves_forecast.ipynb   ECMWF open data, wave model (no account)
-    smoke_cams.ipynb       CAMS global forecast + GFAS fires (free Copernicus key)
     dust_cams.ipynb        CAMS global forecast, dust (free Copernicus key)
     heat_era5land.ipynb    ERA5-Land hourly temperature (free Copernicus key)
 
@@ -145,62 +144,6 @@ md("""## 4 · Your turn 🌍
 """ + OD_LICENCE)]
 
 
-def smoke():
-    name, png = "smoke_cams.ipynb", "smoke_cams.png"
-    page = "https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts?tab=download"
-    return name, png, [
-head("Wildfire smoke over Greece with CAMS 🔥", "Copernicus Atmosphere Monitoring Service · free account", name,
-     """On **2 August 2026** fires in West Attica and on Kefalonia sent smoke across Greece. This notebook maps that day
-from the **CAMS global forecast** (organic-matter aerosol, which in summer is mostly smoke) and adds the fires detected
-by satellite (**CAMS GFAS**). Both are run by ECMWF for the European Union.
-
-GFAS fire data are on the [GFAS dataset page](https://ads.atmosphere.copernicus.eu/datasets/cams-global-fire-emissions-gfas?tab=download):
-accept that licence too.""", wait=True),
-code(PIP_CDS), md(key_md("Atmosphere Data Store", page)), code(KEY), code(IMPORTS),
-md("## 1 · Choose the day and the area"),
-code('''AREA = [42.5, 18.0, 34.0, 30.0]            # north, west, south, east
-DATE = "2026-08-02"
-LEAD = 12                                  # hours after 00 UTC: 12 UTC = 15:00 in Athens
-''' + CITIES),
-md("## 2 · Get the smoke forecast and the fires"),
-code('''cams = ekd.from_source("ads", "cams-global-atmospheric-composition-forecasts", {
-    "variable": "organic_matter_aerosol_optical_depth_550nm", "date": f"{DATE}/{DATE}", "time": "00:00",
-    "type": "forecast", "leadtime_hour": str(LEAD), "area": AREA, "data_format": "grib"}).to_xarray()
-omaod = cams[list(cams.data_vars)[0]].squeeze()
-
-day_before = (dt.date.fromisoformat(DATE) - dt.timedelta(days=1)).isoformat()
-gfas = ekd.from_source("ads", "cams-global-fire-emissions-gfas", {
-    "variable": "wildfire_radiative_power", "date": f"{day_before}/{DATE}", "area": AREA,
-    "data_format": "grib"}).to_xarray()
-frp = gfas[list(gfas.data_vars)[0]]
-frp = frp.max([d for d in frp.dims if d not in ("latitude", "longitude")])      # strongest over the two days
-fl, fo = np.where(frp.values > 0.02)
-print(f"Smoke optical depth up to {float(omaod.max()):.2f}; {len(fl)} grid cells with active fires")'''),
-md("## 3 · Map it"),
-code('''style = ekp.styles.Style(levels=[0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1, 1.5, 2], colors="YlOrBr", extend="max")
-chart = ekp.Map(domain=[AREA[1], AREA[3], AREA[2], AREA[0]], figsize=(11, 8))
-chart.contourf(omaod, style=style)
-chart.coastlines(linewidth=0.7); chart.borders(linewidth=0.5)
-chart.scatter(x=frp.longitude.values[fo], y=frp.latitude.values[fl], s=40 + 400 * np.sqrt(frp.values[fl, fo]),
-              color="#ff3b1f", edgecolors="#ffe08a", linewidths=0.8, zorder=9)
-label_cities(chart)
-chart.legend(label="Organic-matter aerosol optical depth at 550 nm (mostly smoke)")
-chart.title(f"Wildfire smoke over Greece, {DATE} {LEAD:02d}:00 UTC\\nCAMS global forecast · red: fires detected by satellite (GFAS)",
-            fontsize=13)
-chart.attribution("Generated using Copernicus Atmosphere Monitoring Service information 2026")
-chart.save("smoke_cams.png")
-chart.show()'''),
-md("""## 4 · Your turn 🌍
-
-- **The Crete fire:** `DATE = "2026-07-31"`. The smoke shows a day after the fire, because the CAMS forecast uses the
-  previous day's fire detections.
-- **Today:** set `DATE` to yesterday's date for the latest forecast, and `LEAD` up to 120 hours ahead.
-- **Fine particles near the ground:** variable `"particulate_matter_2.5um"` (multiply by 1e9 for µg/m³).
-- CAMS global runs at about 40 km: it shows where the smoke goes, not individual valleys.
-
-""" + c_licence("Atmosphere Monitoring Service"))]
-
-
 def dust():
     name, png = "dust_cams.ipynb", "dust_cams.png"
     page = "https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts?tab=download"
@@ -285,8 +228,8 @@ md("""## 4 · Your turn 🌍
 """ + c_licence("Climate Change Service"))]
 
 
-JOBS = {"waves": waves, "smoke": smoke, "dust": dust, "heat": heat}
-LABELS = {"waves": "waves_qr.png", "smoke": "smoke_qr.png", "dust": "dust_qr.png", "heat": "heat_qr.png"}
+JOBS = {"waves": waves, "dust": dust, "heat": heat}
+LABELS = {"waves": "waves_qr.png", "dust": "dust_qr.png", "heat": "heat_qr.png"}
 
 
 def qr(name, out):

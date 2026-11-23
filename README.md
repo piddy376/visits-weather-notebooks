@@ -1,164 +1,45 @@
-# Weather forecast maps — from ECMWF free & open data
+# Weather and climate notebooks from ECMWF open data
 
-Interactive notebooks for ECMWF Member State visits. **Scan the QR** (or click the Colab badge),
-press **Runtime → Run all**, and make a live **9 km** forecast map for the country — then change
-one line to make it for *your* country, day, or variable. Nothing to install.
+Interactive notebooks made for ECMWF liaison visits and partners. **Scan a QR** (or click a Colab badge), press
+**Runtime → Run all**, and make a live map from ECMWF and Copernicus data, then change one line to make it for your own
+place, day or variable. Everything runs in Google Colab: nothing to install, and a phone or a slow connection is fine.
 
-Everything uses free, open data from ECMWF and open-source Python
-([`ecmwf-opendata`](https://github.com/ecmwf/ecmwf-opendata),
-[`earthkit`](https://earthkit-data.readthedocs.io), `h3`, `cartopy`).
+Each folder has its own page with every notebook, its QR code and a preview.
 
----
+| Folder | For | Notebooks | Data |
+|---|---|---|---|
+| [`greece/`](greece/) 🇬🇷 | ECMWF liaison visit to HNMS, Athens, November 2026 | 8 | IFS 9 km, wave model, HNMS stations, DWD ICON-EU, ERA5, ERA5-Land, CAMS |
+| [`senegal/`](senegal/) 🇸🇳 | Strengthening Early Warnings for Africa (SEWA), in English, French and Portuguese | 4 (× 3 languages) | IFS 9 km, AIFS, CAMS, ERA5 |
+| [`unicef/`](unicef/) | UNICEF: the places UNICEF works | 6 | IFS 9 km, IFS ENS, AIFS ENS, SEAS5, ERA5, ERA5-Land, CAMS |
+| [`hungary/`](hungary/) 🇭🇺 | ECMWF liaison visit to Hungary, 2026 | 1 | IFS 9 km |
+| [`bulgaria/`](bulgaria/) 🇧🇬 | ECMWF liaison visit to Bulgaria, 2026 | 1 | IFS 9 km |
 
-## 🇧🇬 Bulgaria — rainfall
+**Open data, no account:** ECMWF open data (IFS, AIFS, the wave model, the ensembles), HNMS stations on data.gov.gr,
+DWD open data. **Copernicus, free key:** ERA5, ERA5-Land, SEAS5 (C3S) and CAMS; each of these notebooks explains how
+to register and asks for the key in a hidden box that is kept only for the Colab session.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/bulgaria_forecast.ipynb)
+The four notebooks that used to sit at the top level (`bulgaria_forecast`, `hungary_forecast`, `greece_forecast`,
+`greece_sea_heat`) now live in their country folders. The files left here only point to the new place, so QR codes
+already printed still work.
 
-<img src="bulgaria_qr.png" width="200" align="left" hspace="20"/>
-<img src="bulgaria_map.png" width="420"/>
+## Repository layout
 
-<br clear="all"/>
+```
+<country or partner>/   notebooks (.ipynb), their preview maps (.png), QR codes (*_qr.png), README.md
+assets/                 logos used in the notebook headers
+tools/                  scripts that build and run notebooks (make_qr.py makes a Colab QR for any notebook)
+```
 
-## 🇭🇺 Hungary — temperature
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/hungary_forecast.ipynb)
-
-<img src="hungary_qr.png" width="200" align="left" hspace="20"/>
-<img src="hungary_map.png" width="420"/>
-
-<br clear="all"/>
-
-## 🇬🇷 Greece — the week ahead, every island
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/greece_forecast.ipynb)
-
-<img src="greece_qr.png" width="200" align="left" hspace="20"/>
-<img src="greece_map.png" width="420"/>
-
-<br clear="all"/>
-
-<img src="greece_week.png" width="820"/>
-
----
-
-## UNICEF — ECMWF open data for the places UNICEF works
-
-Two notebooks in [`unicef/`](unicef/), both from open data with no account. Each has a `PLACES` list of countries
-where UNICEF responded to, or prepared for, weather and climate hazards in 2025–26 (Philippines, Somalia,
-Mozambique, Malawi, Madagascar, Honduras, Chad, Pakistan).
-
-**Where will the rain fall?** The next 10 days at 9 km.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/rain_forecast.ipynb)
-
-<img src="unicef/rain_qr.png" width="200" align="left" hspace="20"/>
-<img src="unicef/rain_map.png" width="300"/>
-
-<br clear="all"/>
-
-**How sure are we?** The chance of heavy rain from two open ensembles, IFS ENS (physics) and AIFS ENS (machine learning).
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/ensemble_probability.ipynb)
-
-<img src="unicef/ensemble_qr.png" width="200" align="left" hspace="20"/>
-<img src="unicef/ensemble_probability.png" width="420"/>
-
-<br clear="all"/>
-
-### Copernicus data (free account and key)
-
-Copernicus data, run by ECMWF for the EU, is free and open too; the data stores ask you to register once. Each
-notebook asks for your key with a hidden prompt and keeps it only for the Colab session.
-
-**El Niño in ECMWF's seasonal forecast** (C3S, SEAS5). UNICEF's October 2026 El Niño analysis used the September run.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/seasonal_elnino.ipynb)
-
-<img src="unicef/seasonal_qr.png" width="200" align="left" hspace="20"/>
-<img src="unicef/seasonal_elnino.png" width="360"/>
-
-<br clear="all"/>
-
-**Look back at a cyclone with ERA5** (C3S reanalysis, 1940 to now). Cyclone Gezani, Madagascar, February 2026.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/cyclone_era5.ipynb)
-
-<img src="unicef/cyclone_qr.png" width="200" align="left" hspace="20"/>
-<img src="unicef/cyclone_era5.png" width="300"/>
-
-<br clear="all"/>
-
-**The air children breathe, five days ahead** (CAMS). PM2.5 over South Asia; switch to Mongolia in one line.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/air_quality_cams.ipynb)
-
-<img src="unicef/air_qr.png" width="200" align="left" hspace="20"/>
-<img src="unicef/air_quality_cams.png" width="360"/>
-
-<br clear="all"/>
-
-**Counting hot days with ERA5-Land** (C3S). Days at or above 35 °C, the measure in UNICEF's Children's Climate Risk Report 2026.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/unicef/hot_days_era5land.ipynb)
-
-<img src="unicef/hot_qr.png" width="200" align="left" hspace="20"/>
-<img src="unicef/hot_days_era5land.png" width="420"/>
-
-<br clear="all"/>
-
----
-
-## 🇸🇳 Senegal — West Africa, for SEWA
-
-Four notebooks in [`senegal/`](senegal/) for Strengthening Early Warnings for Africa (SEWA), part of the
-Africa–EU Space Partnership Programme under the EU's Global Gateway: funded by the European Union, implemented by ECMWF.
-Each comes in English, French (`_fr`) and Portuguese (`_pt`); the translations were made with AI assistance and checked
-on a best-efforts basis, and the English version is the reference. The first two use open data with no account; the
-forecast ones always fetch the latest run. Everything runs in Colab, so a slow or mobile connection is fine.
-
-**The next six days at 9 km.** Afternoon 2 m temperature across Senegal and its neighbours (IFS open data).
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/heat_forecast_pt.ipynb)
-
-<img src="senegal/heat_qr.png" width="200" align="left" hspace="20"/>
-<img src="senegal/heat_forecast.png" width="420"/>
-
-<br clear="all"/>
-
-**AIFS and IFS, same run.** ECMWF's machine-learned and physics-based forecasts side by side, and the difference.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/aifs_vs_ifs_pt.ipynb)
-
-<img src="senegal/aifs_qr.png" width="200" align="left" hspace="20"/>
-<img src="senegal/aifs_vs_ifs.png" width="520"/>
-
-<br clear="all"/>
-
-### Copernicus data (free account and key)
-
-**Desert dust, three days ahead** (CAMS). Dust aerosol optical depth over West Africa.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/dust_cams_pt.ipynb)
-
-<img src="senegal/dust_qr.png" width="200" align="left" hspace="20"/>
-<img src="senegal/dust_cams.png" width="420"/>
-
-<br clear="all"/>
-
-**The 2024 rainy season with ERA5** (C3S). June–October rain as a percentage of the 1991–2020 normal; change `YEAR` for any year from 1940.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5.ipynb) · [Version française](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5_fr.ipynb) · [Versão portuguesa](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/senegal/rain_era5_pt.ipynb)
-
-<img src="senegal/rain_qr.png" width="200" align="left" hspace="20"/>
-<img src="senegal/rain_era5.png" width="420"/>
-
-<br clear="all"/>
-
----
-
-## How it works
-
-1. Request one field from ECMWF open data at 0.1° (~9 km) — `resol="0p1"`.
-2. Read it with earthkit, bin every grid point into an **H3 hexagon** (res 5 ≈ 9 km), average per cell.
-3. Keep the hexagons inside the country, draw the map, star the capital. (Greece keeps every hexagon that
-   touches land, using the [geoBoundaries](https://www.geoboundaries.org) border, so the small islands stay.)
-
-`tools/build_greece.py` builds and runs the Greece notebook; `tools/build_senegal_stories.py` builds the Senegal ones; `tools/make_qr.py <notebook>` makes its QR.
+The Greece notebooks for HNMS stations and IFS × ICON-EU, and the Senegal notebooks, are built in the private
+`ms-visit-pack` repository and copied here.
 
 ## Data & licence
 
-ECMWF Open Data is free under **Creative Commons CC-BY-4.0**
-([Terms of Use](https://apps.ecmwf.int/datasets/licences/general/)):
-`© ECMWF · Source: www.ecmwf.int · CC-BY-4.0 and ECMWF Terms of Use`.
+- **ECMWF Open Data**, CC BY 4.0 ([Terms of Use](https://apps.ecmwf.int/datasets/licences/general/)):
+  `© ECMWF · Source: www.ecmwf.int · CC-BY-4.0 and ECMWF Terms of Use`.
+- **Copernicus** (C3S, CAMS), produced by ECMWF for the European Union, Copernicus licence:
+  *Generated using Copernicus Climate Change Service / Atmosphere Monitoring Service information 2026.*
+- **HNMS** station data (data.gov.gr) and **DWD** open data: CC BY 4.0, credited in each notebook.
 
-Notebooks by Emma Pidduck · ECMWF User Services.
+The code in this repository is under the licence in [`LICENSE`](LICENSE). These are worked examples, not official
+ECMWF products. Notebooks by Emma Pidduck · ECMWF User Services.
