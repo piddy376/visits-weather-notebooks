@@ -13,7 +13,7 @@ install; everything runs on Google's computers, so a phone or a slow connection 
 |---|---|---|---|
 | 1 | [The week ahead, every island](#1-the-week-ahead-every-island) | ECMWF IFS 9 km | none |
 | 2 | [Waves around Greece, the next six days](#2-waves-around-greece-the-next-six-days) | ECMWF wave model | none |
-| 3 | [Your stations, our forecast](#3-your-stations-our-forecast) | HNMS stations × ECMWF IFS 9 km | none |
+| 3 | [Your stations, our forecast](#3-your-stations-our-forecast) | HNMS stations × ECMWF IFS 9 km and AIFS | none |
 | 4 | [Two European forecasts, side by side](#4-two-european-forecasts-side-by-side) | ECMWF IFS 9 km × DWD ICON-EU | none |
 | 5 | [The hottest week of summer 2026](#5-the-hottest-week-of-summer-2026) | ERA5-Land (C3S) | free Copernicus key |
 | 6 | [The Meltemi over the Aegean](#6-the-meltemi-over-the-aegean) | ERA5 (C3S) | free Copernicus key |
@@ -57,11 +57,14 @@ Significant wave height from ECMWF's wave model, the latest six-day forecast.
 HNMS publishes its automatic weather stations as open data on [data.gov.gr](https://data.gov.gr) (every 5 minutes,
 CC BY 4.0). This notebook fetches the last two days from every station and the ECMWF 9 km forecast for the same hours,
 draws them on one map in one colour scale, and scores the forecast at each station, at the station's own height.
+Then it does the same for **AIFS**, ECMWF's machine-learned forecast, and shows at which stations each model was
+closer: the way to answer "IFS or AIFS?" for your own country is to verify both against your own stations, over many runs.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/greece/hnms_vs_ifs.ipynb)
 
 <img src="hnms_vs_ifs_qr.png" width="160" align="left" hspace="20"/>
-<img src="hnms_vs_ifs_map.png" width="380"/>
+<img src="hnms_vs_ifs_map.png" width="300"/>
+<img src="hnms_ifs_aifs_scores.png" width="300"/>
 
 <br clear="all"/>
 
