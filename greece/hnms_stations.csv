@@ -1,0 +1,76 @@
+id,name,lat,lon,elev_m,located_by
+230,VITSI,40.6482,21.38551,1746,place named in the dataset (approximate)
+114,TANAGRA,38.335,23.563,138,WMO 16699
+189,PARNITHA,38.08333,23.73333,1347,place named in the dataset (approximate)
+116,ARAXOS,38.149,21.422,11,WMO 16687
+007,KASTORIA,40.449,21.274,655,WMO 16614
+252,MOYSTAKOS,35.32185,23.62533,957,place named in the dataset (approximate)
+228,SKOTINA,40.01495,22.55244,0.0,place named in the dataset (approximate)
+010,ZAKYNTHOS,37.751,20.888,5,WMO 16719
+117,ANDRAVIDA,37.923,21.287,10,WMO 16682
+030,MILOS,36.739,24.429,167,WMO 16738
+235,AIGIO,38.24861,22.08194,0.0,place named in the dataset (approximate)
+012,MYKONOS,37.44529,25.32872,109,place named in the dataset (approximate)
+018,KYTHIRA,36.149,22.989,166,WMO 16743
+244,NEMEA,37.82068,22.66102,279,place named in the dataset (approximate)
+131,AKTIO,38.922,20.769,2,WMO 16643
+031,KASTELORIZO,36.143,29.58189,161,place named in the dataset (approximate)
+019,SKIATHOS,39.16227,23.49089,0.0,place named in the dataset (approximate)
+112,ELEFSINA,38.068,23.552,26,WMO 16718
+033,IOANNINA,39.695,20.819,483,WMO 16642
+245,VELO,37.9761,22.75985,5,place named in the dataset (approximate)
+250,TYMPAKI,35.066,24.762,6,WMO 16759
+183,PAXOI,39.20722,20.16139,52,place named in the dataset (approximate)
+214,ALONISSOS,39.15,23.85,29,place named in the dataset (approximate)
+036,ALEXANDROUPOLIS,40.857,25.947,4,WMO 16627
+013,RODOS,36.402,28.089,6,WMO 16749
+110,LARISA,39.646,22.46,71,WMO 16648
+248,SIGRI,39.21161,25.85263,25,place named in the dataset (approximate)
+113,THESSALONIKI,40.529,22.97,2,WMO 16622
+135,SKYROS,38.963,24.491,21,WMO 16684
+239,STENI,38.58125,23.83806,448,place named in the dataset (approximate)
+130,LIMNOS,39.922,25.233,5,WMO 16650
+246,METHONI,36.825,21.704,52,WMO 16734
+011,KOS,36.801,27.09,127,WMO 16742
+032,KASOS,35.41623,26.92328,19,place named in the dataset (approximate)
+227,SITIA,35.216,26.103,114,WMO 16757
+026,TRIPOLI,37.525,22.397,651,WMO 16710
+181,EPITALIO,37.62675,21.49528,0.0,place named in the dataset (approximate)
+211,KERKYRA,39.608,19.914,1,WMO 16641
+232,SOFADES,39.33333,22.1,86,place named in the dataset (approximate)
+225,KOMOTINI,41.11758,25.40587,63,place named in the dataset (approximate)
+115,SOUDA,35.529,24.145,149,WMO 16746
+111,ANCHIALOS,39.224,22.793,13,WMO 16665
+184,PSARA,38.5714,25.5861,10,place named in the dataset (approximate)
+009,CHIOS,38.345,26.142,4,WMO 16706
+014,KALYMNOS,36.9503,26.98388,239,place named in the dataset (approximate)
+243,MALAKASA,38.23789,23.801,343,place named in the dataset (approximate)
+226,GREVENA,40.08333,21.41667,509,place named in the dataset (approximate)
+038,IRAKLEIO,35.335,25.182,35,WMO 16754
+133,KASTELLI,35.189,25.329,337,WMO 16760
+008,MYTILENE,39.054,26.604,4,WMO 16667
+247,SPARTA,37.07446,22.43009,167,place named in the dataset (approximate)
+191,ALEXANDREIA,40.62667,22.44417,0.0,place named in the dataset (approximate)
+238,ARACHOVA,38.47958,22.5835,1021,place named in the dataset (approximate)
+236,NAFPAKTOS,38.39167,21.8275,0.0,place named in the dataset (approximate)
+017,NAXOS,37.101,25.373,11,WMO 16732
+120,KALAMATA,37.069,22.023,6,WMO 16726
+035,MEGARA,37.99471,23.34324,0.0,place named in the dataset (approximate)
+234,AGRINIO,38.62139,21.40778,11,place named in the dataset (approximate)
+186,SAMOTHRAKI,40.47333,25.52222,139,place named in the dataset (approximate)
+034,SAMOS,37.691,26.916,6,WMO 16723
+253,RETHYMNO,35.36555,24.48232,0.0,place named in the dataset (approximate)
+229,CHORTIATIS,40.60954,23.10014,951,place named in the dataset (approximate)
+006,KEFALONIA-ARGOSTOLI,38.12,20.505,25,WMO 16685
+251,ARGOS,37.63333,22.73333,2,place named in the dataset (approximate)
+233,TRIKALA(THESSALIAS),39.55493,21.76837,86,place named in the dataset (approximate)
+134,SANTORINI,36.402,25.474,40,WMO 16744
+241,MARKOPOYLO IPASIA,37.88333,23.93333,52,place named in the dataset (approximate)
+242,ELLINIKO,37.89,23.742,43,WMO 16716
+185,AGIOS EFSTRATIOS,39.5198,25.00688,35,place named in the dataset (approximate)
+137,CHRISOUPOLI KAVALAS,40.92,24.62,4,WMO 16624
+249,TATOI,38.107,23.78,237,WMO 16715
+040,SPATA EL.VENIZELOS 21L,37.921,23.931,72,WMO 16741
+024,IKARIA,37.61472,26.29444,30,place named in the dataset (approximate)
+212,KARPATHOS,35.428,27.147,10,WMO 16765
+188,KARYES(AGIO OROS),40.25715,24.24498,338,place named in the dataset (approximate)
