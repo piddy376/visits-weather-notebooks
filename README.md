@@ -9,6 +9,13 @@ Each folder has its own page with every notebook, its QR code and a preview.
 | Folder | For | Notebooks | Data |
 |---|---|---|---|
 | [`greece/`](greece/) 🇬🇷 | ECMWF liaison visit to HNMS, Athens, November 2026 | 8 | IFS 9 km, wave model, HNMS stations, DWD ICON-EU, ERA5, ERA5-Land, CAMS |
+| [`france/`](france/) 🇫🇷 | ECMWF liaison visit to Météo-France, Toulouse, 2026 | 3 | wave model, ERA5, ERA5-Land |
+| [`sweden/`](sweden/) 🇸🇪 | ECMWF liaison visit to SMHI, Norrköping, 2026 | 3 | ERA5, ERA5-Land, CAMS |
+| [`china/`](china/) 🇨🇳 | ECMWF–China bilateral meeting, 2026 | 2 | IFS, AIFS Single, ERA5-Land |
+| [`germany/`](germany/) 🇩🇪 | ECMWF liaison visit to Germany, 2026 | 1 | IFS 9 km |
+| [`poland/`](poland/) 🇵🇱 | ECMWF liaison visit to Poland, 2026 | 1 | CAMS European air quality, IFS 9 km |
+| [`italy/`](italy/) 🇮🇹 | ECMWF liaison visit to Italy, 2026 | 1 | CAMS European air quality, IFS 9 km |
+| [`canada/`](canada/) 🇨🇦 | ECMWF liaison visit to Canada, 2026 | 1 | IFS 9 km |
 | [`senegal/`](senegal/) 🇸🇳 | Strengthening Early Warnings for Africa (SEWA), in English, French and Portuguese | 4 (× 3 languages) | IFS 9 km, AIFS, CAMS, ERA5 |
 | [`unicef/`](unicef/) | UNICEF: the places UNICEF works | 6 | IFS 9 km, IFS ENS, AIFS ENS, SEAS5, ERA5, ERA5-Land, CAMS |
 | [`hungary/`](hungary/) 🇭🇺 | ECMWF liaison visit to Hungary, 2026 | 1 | IFS 9 km |
