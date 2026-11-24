@@ -14,11 +14,12 @@ install; everything runs on Google's computers, so a phone or a slow connection 
 | 1 | [The week ahead, every island](#1-the-week-ahead-every-island) | ECMWF IFS 9 km | none |
 | 2 | [Waves around Greece, the next six days](#2-waves-around-greece-the-next-six-days) | ECMWF wave model | none |
 | 3 | [Your stations, our forecast](#3-your-stations-our-forecast) | HNMS stations × ECMWF IFS 9 km and AIFS | none |
-| 4 | [Two European forecasts, side by side](#4-two-european-forecasts-side-by-side) | ECMWF IFS 9 km × DWD ICON-EU | none |
-| 5 | [The hottest week of summer 2026](#5-the-hottest-week-of-summer-2026) | ERA5-Land (C3S) | free Copernicus key |
-| 6 | [The Meltemi over the Aegean](#6-the-meltemi-over-the-aegean) | ERA5 (C3S) | free Copernicus key |
-| 7 | [How warm was the sea?](#7-how-warm-was-the-sea) | ERA5 (C3S) | free Copernicus key |
-| 8 | [Saharan dust reaches Greece](#8-saharan-dust-reaches-greece) | CAMS | free Copernicus key |
+| 4 | [Beyond "how close": scoring a forecast](#4-beyond-how-close-scoring-a-forecast) | HNMS stations × ECMWF IFS, AIFS and both ensembles | none |
+| 5 | [Two European forecasts, side by side](#5-two-european-forecasts-side-by-side) | ECMWF IFS 9 km × DWD ICON-EU | none |
+| 6 | [The hottest week of summer 2026](#6-the-hottest-week-of-summer-2026) | ERA5-Land (C3S) | free Copernicus key |
+| 7 | [The Meltemi over the Aegean](#7-the-meltemi-over-the-aegean) | ERA5 (C3S) | free Copernicus key |
+| 8 | [How warm was the sea?](#8-how-warm-was-the-sea) | ERA5 (C3S) | free Copernicus key |
+| 9 | [Saharan dust reaches Greece](#9-saharan-dust-reaches-greece) | CAMS | free Copernicus key |
 
 <br clear="all"/>
 
@@ -68,7 +69,23 @@ closer: the way to answer "IFS or AIFS?" for your own country is to verify both 
 
 <br clear="all"/>
 
-### 4. Two European forecasts, side by side
+### 4. Beyond "how close": scoring a forecast
+
+How close a forecast came is a start, but a crude one. This notebook works through the standard verification toolkit
+on two days of HNMS stations: bias, RMSE and correlation, and the error taken apart (offset, variability, timing);
+error growth with lead time and skill against "yesterday's weather"; errors by hour and by station type; hits, misses
+and false alarms for rain and wind (POD, FAR, ETS); and the IFS and AIFS **ensembles** (CRPS, spread against error,
+rank histogram). One setting runs it over weeks instead of days.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/greece/hnms_scores.ipynb)
+
+<img src="hnms_scores_qr.png" width="160" align="left" hspace="20"/>
+<img src="hnms_scores.png" width="300"/>
+<img src="hnms_ens_scores.png" width="300"/>
+
+<br clear="all"/>
+
+### 5. Two European forecasts, side by side
 
 ECMWF's IFS (9 km) and Deutscher Wetterdienst's ICON-EU (6.5 km), both open data, from the newest run both have
 published: 2 m temperature, 10 m wind or precipitation over Greece, the two forecasts and their difference, and both
@@ -88,7 +105,7 @@ models at one place for five days. It shows where two forecasts differ, not whic
 Copernicus data, produced by ECMWF for the European Union, is free and open too; the data stores ask you to register
 once. Each notebook explains how, and asks for your key in a hidden box that is kept only for the Colab session.
 
-### 5. The hottest week of summer 2026
+### 6. The hottest week of summer 2026
 
 22–28 August 2026 hour by hour from ERA5-Land, the hottest hour mapped. Every island shows.
 
@@ -99,7 +116,7 @@ once. Each notebook explains how, and asks for your key in a hidden box that is 
 
 <br clear="all"/>
 
-### 6. The Meltemi over the Aegean
+### 7. The Meltemi over the Aegean
 
 The dry northerly summer wind down the Aegean, from ERA5.
 
@@ -110,7 +127,7 @@ The dry northerly summer wind down the Aegean, from ERA5.
 
 <br clear="all"/>
 
-### 7. How warm was the sea?
+### 8. How warm was the sea?
 
 The summer 2026 marine heatwave: sea surface temperature against the 1991–2020 average, from ERA5.
 
@@ -121,7 +138,7 @@ The summer 2026 marine heatwave: sea surface temperature against the 1991–2020
 
 <br clear="all"/>
 
-### 8. Saharan dust reaches Greece
+### 9. Saharan dust reaches Greece
 
 11–15 November 2026: dust from Libya across the Ionian Sea to Greece, from the Copernicus Atmosphere Monitoring Service.
 
