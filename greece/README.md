@@ -20,6 +20,7 @@ install; everything runs on Google's computers, so a phone or a slow connection 
 | 7 | [The Meltemi over the Aegean](#7-the-meltemi-over-the-aegean) | ERA5 (C3S) | free Copernicus key |
 | 8 | [How warm was the sea?](#8-how-warm-was-the-sea) | ERA5 (C3S) | free Copernicus key |
 | 9 | [Saharan dust reaches Greece](#9-saharan-dust-reaches-greece) | CAMS | free Copernicus key |
+| 10 | [Measured at sea, forecast by ECMWF](#10-measured-at-sea-forecast-by-ecmwf) | Mediterranean wave buoys (Copernicus Marine) × ECMWF wave model | none |
 
 <br clear="all"/>
 
@@ -51,7 +52,7 @@ Significant wave height from ECMWF's wave model, the latest six-day forecast.
 
 ---
 
-## Observations and other models: open data from three centres, no account
+## Observations and other models: open data from four sources, no account
 
 ### 3. Your stations, our forecast
 
@@ -95,6 +96,20 @@ models at one place for five days. It shows where two forecasts differ, not whic
 
 <img src="ifs_vs_icon_qr.png" width="160" align="left" hspace="20"/>
 <img src="ifs_vs_icon_map.png" width="520"/>
+
+<br clear="all"/>
+
+### 10. Measured at sea, forecast by ECMWF
+
+The land-station notebooks, at sea. Every wave buoy in the Mediterranean that reports to the Copernicus Marine Service
+(including the HCMR buoy off Heraklion, the one Greek buoy in the feed today), its last week of measurements, and the
+ECMWF wave model at the same hours: a timeline at one buoy, a map with every buoy as a dot on the model's colour scale,
+and how close the model was at every buoy. Over a month, the offshore buoys and the model agree to about 0.25 m.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piddy376/visits-weather-notebooks/blob/main/greece/buoys_vs_waves.ipynb)
+
+<img src="buoys_qr.png" width="160" align="left" hspace="20"/>
+<img src="buoys_vs_waves.gif" width="520"/>
 
 <br clear="all"/>
 
@@ -158,5 +173,7 @@ The summer 2026 marine heatwave: sea surface temperature against the 1991–2020
 - **DWD open data**, CC BY 4.0: `Source: Deutscher Wetterdienst (opendata.dwd.de)`.
 - **Copernicus** (C3S, CAMS), Copernicus licence: *Generated using Copernicus Climate Change Service / Atmosphere
   Monitoring Service information 2026.*
+- **Wave buoys**: *E.U. Copernicus Marine Service Information*, Mediterranean In Situ NRT observations
+  ([doi:10.48670/moi-00044](https://doi.org/10.48670/moi-00044)), assembled by HCMR from the operators' data.
 
 These are worked examples, not official ECMWF or HNMS products. Notebooks by Emma Pidduck · ECMWF User Services.

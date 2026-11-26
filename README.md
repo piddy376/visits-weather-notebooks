@@ -8,7 +8,7 @@ Each folder has its own page with every notebook, its QR code and a preview.
 
 | Folder | For | Notebooks | Data |
 |---|---|---|---|
-| [`greece/`](greece/) 🇬🇷 | ECMWF liaison visit to HNMS, Athens, November 2026 | 8 | IFS 9 km, wave model, HNMS stations, DWD ICON-EU, ERA5, ERA5-Land, CAMS |
+| [`greece/`](greece/) 🇬🇷 | ECMWF liaison visit to HNMS, Athens, November 2026 | 10 | IFS 9 km, wave model, HNMS stations, Copernicus Marine wave buoys, DWD ICON-EU, ERA5, ERA5-Land, CAMS |
 | [`france/`](france/) 🇫🇷 | ECMWF liaison visit to Météo-France, Toulouse, 2026 | 3 | wave model, ERA5, ERA5-Land |
 | [`sweden/`](sweden/) 🇸🇪 | ECMWF liaison visit to SMHI, Norrköping, 2026 | 3 | ERA5, ERA5-Land, CAMS |
 | [`china/`](china/) 🇨🇳 | ECMWF–China bilateral meeting, 2026 | 2 | IFS, AIFS Single, ERA5-Land |
